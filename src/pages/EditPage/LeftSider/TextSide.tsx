@@ -37,16 +37,22 @@ const settings = [
 const TextSide = memo(() => {
   // 使用类型安全的选择器
   const addCmp = useEditStore((state) => state.addCmp);
-
-  console.log("TextSide render"); //sy-log
   return (
       <div className={leftSideStyles.main}>
         <ul className={leftSideStyles.box}>
           {settings.map((item) => (
               <li
+                  draggable={"true"}
                   key={item.value}
                   className={leftSideStyles.item}
-                  onClick={() => addCmp({ ...item, type: isTextComponent })}>
+                  onClick={() => addCmp({ ...item, type: isTextComponent })}
+                  onDragStart={(e)=>{
+                    e.dataTransfer.setData(
+                        "drag-cmp",
+                        JSON.stringify({...item, type: isTextComponent})
+                    )
+                  }}
+              >
                 {item.value.indexOf("双击编辑") > -1
                     ? item.value.slice(4)
                     : item.value}
