@@ -19,3 +19,14 @@ export default function Cmp(props: ICmpProps) {
     </div>
   );
 }
+
+// export default function Cmp({ cmp, index }: ICmpProps) {
+//   const { style, ...rest } = cmp;
+//
+//   return (
+//       <div className={styles.main} style={{ ...style, zIndex: index }}>
+//         {cmp.type === isTextComponent && <Text {...rest} />}
+//         {cmp.type === isImgComponent && <Img {...rest} />}
+//       </div>
+//   );
+// }

@@ -1,6 +1,7 @@
 import { defaultComponentStyle } from "@/utils/const";
 import leftSideStyles from "./leftSide.module.less";
-import useEditStore from "@/store/editStore";
+// import useEditStore from "@/store/editStore";
+import {addCmp} from "@/store/editStore";
 import { isTextComponent } from ".";
 import { memo } from "react";
 
@@ -34,9 +35,9 @@ const settings = [
   },
 ];
 
-const TextSide = memo(() => {
+const TextSider = memo(() => {
   // 使用类型安全的选择器
-  const addCmp = useEditStore((state) => state.addCmp);
+  // const addCmp = useEditStore((state) => state.addCmp);
   return (
       <div className={leftSideStyles.main}>
         <ul className={leftSideStyles.box}>
@@ -45,7 +46,7 @@ const TextSide = memo(() => {
                   draggable={"true"}
                   key={item.value}
                   className={leftSideStyles.item}
-                  onClick={() => addCmp({ ...item, type: isTextComponent })}
+                  onClick={() =>  addCmp({...item, type: isTextComponent})}
                   onDragStart={(e)=>{
                     e.dataTransfer.setData(
                         "drag-cmp",
@@ -63,4 +64,4 @@ const TextSide = memo(() => {
   );
 });
 
-export default TextSide;
+export default TextSider;
