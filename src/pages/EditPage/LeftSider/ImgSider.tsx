@@ -7,20 +7,20 @@ const defaultStyle = {
     ...defaultComponentStyle,
 };
 
-const url = "http://localhost:3001/api/images/";
+const url = "http://localhost:3000/api/images/";
 
 const settings = [
     {
-        value: url + "react-head.png",
+        value: url + "react-head.jpg",
         style: defaultStyle,
     },
 
     {
-        value: url + "bg1.png",
+        value: url + "bg1.jpg",
         style: defaultStyle,
     },
     {
-        value: url + "bg2.png",
+        value: url + "bg2.jpg",
         style: defaultStyle,
     }
 ];
