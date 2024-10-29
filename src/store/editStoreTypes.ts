@@ -1,6 +1,11 @@
 import React from "react";
 
-export type Style = React.CSSProperties;
+// export type Style = React.CSSProperties;
+// 扩展 Style 类型以包含更具体的类型
+export type Style = React.CSSProperties & {
+  [key: string]: string | number | undefined;
+};
+
 
 export interface ICanvas {
   title: string;
@@ -21,6 +26,7 @@ export interface ICmpWithKey extends ICmp {
 
 export type EditStoreState = {
   canvas: ICanvas;
+  assembly: Set<number>;
 };
 
 export type AddCmpFC = (_cmp: ICmp) => void;

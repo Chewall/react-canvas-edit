@@ -30,7 +30,7 @@ const LeftSider = memo(() => {
     };
   }, []);
 
-  console.log("left render"); //sy-log
+  // console.log("left render"); //sy-log
 
   return (
     <div className={styles.main}>
