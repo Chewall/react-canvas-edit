@@ -115,14 +115,26 @@ export const updateAssemblyCmpsByDistance = (newStyle: Style) => {
   useEditStore.setState((draft) => {
     draft.assembly.forEach((index) => {
       const cmp = draft.canvas.cmps[index];
+      let invalid = false
+
       for (const key in newStyle) {
         // 使用类型断言
         const styleKey = key as keyof Style;
         // 确保类型安全
         if (typeof cmp.style[styleKey] === 'number' && typeof newStyle[styleKey] === 'number') {
+          if (
+              (styleKey === "width" || styleKey === "height") &&
+              cmp.style[styleKey] + newStyle[styleKey] < 2
+          ) {
+            invalid = true;
+            break;
+          }
           cmp.style[styleKey] += newStyle[styleKey] as number;
         } else {
           cmp.style[styleKey] = newStyle[styleKey];
+        }
+        if (!invalid) {
+          draft.canvas.cmps[index] = cmp;
         }
       }
     });
